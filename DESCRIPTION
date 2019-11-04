@@ -10,6 +10,7 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Remotes:
-  brainvr/brainvr-reader
-Imports:
+  BrainVR/brainvr-reader
+Depends:
   brainvr.reader
+RoxygenNote: 6.1.1
