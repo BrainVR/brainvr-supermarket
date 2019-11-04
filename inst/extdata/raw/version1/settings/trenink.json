@@ -1,0 +1,20 @@
+{
+  "ExperimentName": "ItemPickup",
+  "Settings": [{
+    "Name": "Default setting",
+    "Tour": true,
+    "TourTime": 240.0,
+    "ShowListTime": 15.0,
+    "ShowListIncrement": 5.0,
+    "Delay": true,
+    "DelayTime": 5,
+    "TaskTimeLimit": 1800,
+    "KeySubmit": true,
+    "GenerateLogs": true,
+    "RestartPlayer": true,
+    "RandomList": true,
+    "RandomUnique": true,
+    "RandomListItems" : 3,
+    "RandomListIncrement": 1    
+	}]
+}

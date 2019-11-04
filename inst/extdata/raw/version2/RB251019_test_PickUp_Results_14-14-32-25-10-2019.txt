@@ -1,0 +1,14 @@
+***SESSION HEADER***
+{
+  "Participant": "RB251019",
+  "Timestamp": "14-14-32-25-10-2019"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time Finished; Time Started; Task items; Items collected; Additional items; Missing items; Task time; Task trajectory; Additional items list; Missing items list
+2302.3140;2122.44;3;3;0;0;170.56;97.39;;;
+2972.8210;2524.01;5;3;2;2;439.5;285.65;(ITEM_MAYONNAISE,ITEM_PEAR);(ITEM_PEPPER,ITEM_TOWEL);
+3684.7430;3222.11;7;5;1;2;453.32;203.23;(ITEM_TOYBEAR,ITEM_POT,ITEM_CUCUMBER);(ITEM_COOKINGPOT,ITEM_PENCIL);
+4588.9350;4025.26;9;7;2;2;554.36;364.49;(ITEM_TOWEL,ITEM_FLOUR);(ITEM_COLORBOX,ITEM_PENCIL);

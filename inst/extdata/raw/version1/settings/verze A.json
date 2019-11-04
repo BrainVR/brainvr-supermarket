@@ -1,0 +1,8 @@
+﻿{
+  "tasks": [
+    { "task": [ "Pokladnička", "Třešně", "Mléko" ] },
+    { "task": [ "Kečup", "Jar", "Smetana", "Tužka", "Jablko" ] },
+    { "task": [ "Sušenky", "Letadlo", "Těstoviny", "Talíř", "Lilek", "Kniha", "Guma" ] },
+    { "task": [ "Citrón", "Konvice", "Vajíčka", "Kartáček", "Šlehačka", "Pánev", "Tričko", "Žampión", "Váza" ] }
+  ]
+}

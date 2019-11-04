@@ -1,0 +1,14 @@
+***SESSION HEADER***
+{
+  "Participant": "sergey",
+  "Timestamp": "09-13-09-18-04-2019"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+TimeFinished; TimeStarted; TaskItems; ItemsCollected; AdditionalItems; MissingItems; TaskTime; TaskTrajectory; AdditionalItemsList; MissingItemsList;
+303.2360;236.59;3;3;0;0;58.3;118.13;;;
+549.2517;335.09;5;5;0;0;205.81;306.48;;;
+764.1783;606.12;7;4;2;3;149.72;281.54;(Letadlo,Těstoviny,Guma);(Brambůrky,Cereálie);
+962.0117;831.24;9;5;1;4;122.42;243.8;(Vajíčka,Kartáček,Pánev,Váza);(Talíř);
