@@ -1,6 +1,9 @@
 ## Playgrounds
 *playground.R
 
+## Preprocessed files
+inst/**/*_preprocessed*
+
 ## R
 .Rproj.user
 .Rhistory
