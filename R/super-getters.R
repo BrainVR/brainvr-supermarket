@@ -11,6 +11,7 @@
 get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL){
   exp_log <- get_experiment_log(obj)
   exp_log$pickup_order <- 1:nrow(exp_log) #for time getting
+  exp_log$trial_pickup_order <- unlist(sapply(rle(exp_log$TestCycle)$lengths, function(x){1:x}))
   obj_log <- exp_log[exp_log$ObjectName == object_name, ]
   if(nrow(obj_log) > 1){
     if(is.null(i_cycle)){
@@ -18,14 +19,14 @@ get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL){
       return(NULL)
     }
     obj_log <- obj_log[obj_log$TestCycle == i_cycle, ]
-    if(nrow(obj_log)!=1){
+    if(nrow(obj_log) != 1){
       warning("There were ", nrow(obj_log), "items ", object_name, " picked up in the cycle. Author needs to fix this function." )
       return(NULL)
     }
   }
-  # TODO - this needs to reflect tasks whcih are first in each cycle, not jsut first task.- This information is in the result log
-  if(obj_log$pickup_order == 1){
-    start_time <- get_log(obj)$timestamp[1]
+  if(obj_log$trial_pickup_order == 1){
+    #if it is the first item, it considers start the TimeStarted column from results log
+    start_time <- obj$data$results_log$data$TimeStarted[obj_log$TestCycle]
   } else {
     start_time <- exp_log$Time[obj_log$pickup_order-1] #previous item pickup time
   }
