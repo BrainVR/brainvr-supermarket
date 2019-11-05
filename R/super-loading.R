@@ -47,11 +47,11 @@ load_supermarket_takslist <- function(filepath){
 }
 
 json_tasklist_to_data_frame <- function(tasklist){
-  df <- data.frame(trial = numeric(0), order = numeric(0), item = character(0))
+  df <- data.frame(trial = numeric(0), n_items = numeric(0), order = numeric(0), item = character(0))
   for (i in 1:length(tasklist$tasks)) {
     task <- tasklist$tasks[[i]]$task
     n <- length(task)
-    df_small <- data.frame(trial  = rep(i, n), order = 1:n, item = unlist(task), stringsAsFactors = F)
+    df_small <- data.frame(trial  = rep(i, n), n_items = rep(n, n), order = 1:n, item = unlist(task), stringsAsFactors = F)
     df <- rbind(df, df_small)
   }
   return(df)
