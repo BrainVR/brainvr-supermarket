@@ -11,7 +11,7 @@ load_supermarket_experiments <- function(folder){
   message("Loaded ", length(exps), " from folder ", folder)
   for(i in 1:length(exps)){
     exps[[i]]$data$position <- add_area_boundaries(exps[[i]]$data$position, AREA_BOUNDARIES)
-    class(exps[[i]]) <- append(class(exps[[i]]), "supermarket")
+    class(exps[[i]]) <- append("supermarket", class(exps[[i]]))
   }
   # Do some preprocessing
   return(exps)

@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-get_position_pickup <- function(obj, object_name = NULL, i_cycle = NULL){
+get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL){
   exp_log <- get_experiment_log(obj)
   exp_log$pickup_order <- 1:nrow(exp_log) #for time getting
   obj_log <- exp_log[exp_log$ObjectName == object_name, ]
@@ -39,19 +39,31 @@ get_position_pickup <- function(obj, object_name = NULL, i_cycle = NULL){
 #' @param obj supermarket object
 #' @param i_trial
 #'
+#' @importFrom brainvr.reader get_trial_times
 #' @return navr position object
 #' @export
 #'
 #' @examples
-get_position_trial <- function(obj, i_trial){
-  exp_log <- get_experiment_log(obj)
-  i_rows <- which(exp_log$TestCycle == i_trial)
-  if(i_trial == 1){
-    start_time <- get_log(obj)$timestamp[1]
-  } else {
-    start_time <- exp_log$Time[i_rows[1] - 1]
-  }
-  end_time <- exp_log$Time[tail(i_rows, 1)]
-  pos <- get_position_timewindow(obj, start_time, end_time)
+get_trial_position.supermarket <- function(obj, i_trial){
+  timewindow <- get_trial_times.supermarket(obj, i_trial)
+  pos <- get_position_timewindow(obj, timewindow$start, timewindow$end)
   return(pos)
+}
+
+#' Returns trial times
+#'
+#' @param obj
+#' @param i_trial
+#'
+#' @importFrom brainvr.reader get_trial_times
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_trial_times.supermarket <- function(obj, i_trial){
+  results_trial <- obj$data$results_log[i_trial, ]
+  return(list(waitingToStart = results_trial$TimeStarted,
+              start = results_trial$TimeStarted,
+              end = results_trial$TimeFinished))
 }
