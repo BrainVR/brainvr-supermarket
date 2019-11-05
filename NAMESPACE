@@ -3,4 +3,6 @@
 export(load_supermarket_experiments)
 export(load_supermarket_settings)
 export(load_supermarket_takslist)
+export(task_performance_all)
+export(task_performance_trial)
 import(jsonlite)
