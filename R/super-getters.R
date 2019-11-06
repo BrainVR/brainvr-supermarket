@@ -63,7 +63,7 @@ get_trial_position.supermarket <- function(obj, i_trial){
 #'
 #' @examples
 get_trial_times.supermarket <- function(obj, i_trial){
-  results_trial <- obj$data$results_log[i_trial, ]
+  results_trial <- obj$data$results_log$data[i_trial, ]
   return(list(waitingToStart = results_trial$TimeStarted,
               start = results_trial$TimeStarted,
               end = results_trial$TimeFinished))
