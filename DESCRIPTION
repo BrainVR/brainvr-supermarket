@@ -15,3 +15,4 @@ Remotes:
 Depends:
   brainvr.reader
 RoxygenNote: 6.1.1
+StagedInstall: no
