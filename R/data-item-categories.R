@@ -2,6 +2,9 @@
 #'
 #' This dataframe serves the purpose to convert between language versions
 #' as well as codument categorization of individual objects
+#'
+#' Language options at this point include "CZ" and "EN"
+#'
 #' @format A data.frame with 212 items and 5 variables:
 #' \describe {
 #'    \item{ID}{ID of the item. In english, but ultimately convertable}

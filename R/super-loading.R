@@ -1,16 +1,19 @@
 #' Loads supermarket experiment data from folder
 #'
 #' @param folder folder with one or more supermarket experiments
+#' @param language language of the items in the experiment log.
+#' Only important if you are not logging item codes
+#' See language options in [item_categories]. Default is "CZ".
 #'
 #' @return list with loaded experiments
 #' @export
 #'
 #' @examples
-load_supermarket_experiments <- function(folder){
+load_supermarket_experiments <- function(folder, language = "CZ"){
   exps <- load_experiments(folder)
   message("Loaded ", length(exps), " from folder ", folder)
   for(i in 1:length(exps)){
-    exp <- preprocess_supermarket(exps[[i]])
+    exp <- preprocess_supermarket(exps[[i]], language)
     exps[[i]] <- exp
   }
   # Do some preprocessing
@@ -36,17 +39,21 @@ load_supermarket_settings <- function(filepath){
 #'
 #' @param filepath path to the .json tasklist file. In newer logging versions, this is already included in the header,
 #' but in older versions it needs to be loaded separately
+#' @param language language of the tasklist.  Only important if you are not logging item codes
+#' See language options in [item_categories]. Default is "CZ".
 #'
 #' @return data.frame with supermarket task progression
 #' @export
 #'
 #' @examples
-load_supermarket_takslist <- function(filepath){
+load_supermarket_takslist <- function(filepath, language = "CZ"){
   settings <- jsonlite::read_json(filepath)
   df <- json_tasklist_to_data_frame(settings)
+  df$item <- convert_name_to_item_code(df$item, language)
   return(df)
 }
 
+#' HELPERS -------
 json_tasklist_to_data_frame <- function(tasklist){
   df <- data.frame(trial = numeric(0), n_items = numeric(0), order = numeric(0), item = character(0))
   for (i in 1:length(tasklist$tasks)) {

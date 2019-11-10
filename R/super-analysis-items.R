@@ -8,13 +8,9 @@
 #'
 #' @examples
 task_performance_trial <- function(obj, i_trial){
-  if(is.null(obj$tasklist)){
-    warning("cannot calcualte results when the tasklist are missing")
-    return(NULL)
-  }
   ## DO trial number validations
   exp_data <- obj$data$experiment_log$data
-  wanted_items <- obj$tasklist$item[obj$tasklist$trial == i_trial]
+  wanted_items <- get_trial_wanted_items(obj, i_trial)
   collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial]
 
   ls <- list(trial = i_trial, n_items = length(wanted_items))
@@ -26,7 +22,7 @@ task_performance_trial <- function(obj, i_trial){
   ls <- c(ls, ls_categories)
 
   # calculates how many extra items were requested in previous trials
-  ls_items_previous <- results_from_previous(ls$extra_items, i_trial, obj$tasklist)
+  ls_items_previous <- results_from_previous(ls$extra_items, i_trial, obj)
   ls <- c(ls, ls_items_previous)
   return(ls)
 }
@@ -51,8 +47,6 @@ task_performance_all <- function(obj){
 
 ### HELPERS -----
 convert_items_to_categories <- function(items){
-  lookup <- brainvr.supermarket::item_categories[, c("CZ", "Category")]
-  colnames(lookup) <- c("item", "category")
   categories <- unlist(sapply(items, item_category))
   return(categories)
 }
@@ -94,12 +88,12 @@ category_results <- function(wanted_items, collected_items){
   return(ls)
 }
 
-results_from_previous <- function(extra_items, i_trial, tasklist){
+results_from_previous <- function(extra_items, i_trial, obj){
   if(i_trial == 1) {
     ls <- list(last_trial_items = character(0), all_previous_items = character(0))
   } else {
-    all_previous_wanted_items <- tasklist$item[tasklist$trial %in% (1:i_trial-1)]
-    last_trial_wanted_items <- tasklist$item[tasklist$trial == i_trial-1]
+    all_previous_wanted_items <- get_trial_wanted_items(obj, 1:i_trial-1)
+    last_trial_wanted_items <- get_trial_wanted_items(obj, i_trial - 1)
     ls <- list()
     ls$last_trial_items <- base::intersect(extra_items, last_trial_wanted_items)
     ls$all_previous_items <- base::intersect(extra_items, all_previous_wanted_items)
@@ -127,8 +121,8 @@ collapse_fields <- function(ls, fields){
 }
 
 # Returns item category from a lookup table
-item_category <- function(item_name_cz){
-  return(item_categories$Category[item_categories$CZ == item_name_cz])
+item_category <- function(item_code){
+  return(item_categories$Category[item_categories$ID == item_code])
 }
 
 create_results_table <- function(){
