@@ -7,7 +7,7 @@
 ***TEST HEADER***
 
 ---TEST HEADER---
-Time; Test cycle; Task items; Player possition; Object Name; Task Order; Action; Right/Wrong; Trajectory
+Time; TestCycle; TaskItems; PlayerPosition; ObjectName; TaskOrder; Action; RightWrong; Trajectory;
 2185.4000;1;3;(-25.0, 0.7, 54.5);ITEM_BUTTER;3;Sebráno;Správně;30.25776;
 2197.2710;1;3;(-25.0, 0.6, 54.5);ITEM_BUTTER;3;Sebráno;Špatně;0;
 2210.0100;1;3;(-24.9, 2.5, 55.6);ITEM_BUTTER;3;Odhozeno;Správně;0;
