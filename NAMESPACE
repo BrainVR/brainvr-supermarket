@@ -3,6 +3,7 @@
 S3method(get_trial_position,supermarket)
 S3method(get_trial_times,supermarket)
 export(get_pickup_position)
+export(get_trial_wanted_items)
 export(load_supermarket_experiments)
 export(load_supermarket_settings)
 export(load_supermarket_takslist)
