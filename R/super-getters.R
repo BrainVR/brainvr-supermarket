@@ -95,7 +95,9 @@ get_trial_wanted_items <- function(obj, i_trials){
     warning("cannot return wanted items without both experiment and results logs")
     return(NULL)
   }
-  collected_correct_items <- exp_log[exp_log$TestCycle %in% i_trials & exp_log$RightWrong, "ObjectName" ]
+  collected_correct_items <- exp_log[exp_log$TestCycle %in% i_trials &
+                                       exp_log$Action == "pickup" &
+                                       exp_log$RightWrong, "ObjectName" ]
   non_collected_items <- get_trial_missing_items(obj, i_trials)
   wanted_items <- c(collected_correct_items, non_collected_items)
   return(wanted_items)
