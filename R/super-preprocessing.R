@@ -24,7 +24,7 @@ preprocess_supermarket_experiment <- function(obj, language = "CZ"){
 preprocess_supermarket_results <- function(obj, language){
   res <- get_results_log(obj)
   if(!is.null(res)){
-    if(!("TestCycle" %in% colnames(res))) res$TestCycle <- 1:nrow(res)
+    if(!("TestCycle" %in% colnames(res)) & nrow(res) > 0) res$TestCycle <- 1:nrow(res)
     res$MissingItemsList <- gsub("[()]","", res$MissingItemsList)
     res$AdditionalItemsList <- gsub("[()]","", res$AdditionalItemsList)
     if(!has_item_codes(obj)){

@@ -14,9 +14,7 @@ task_performance_trial <- function(obj, i_trial){
   collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "pickup"]
   dropped_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "drop"]
   # removes dropped items from collected items
-  for(dropped_item in dropped_items){
-    collected_items <- collected_items[-match(dropped_item, collected_items)]
-  }
+  if(length(dropped_items) > 0) collected_items <- setdiff_unique(collected_items, dropped_items)
 
   ls <- list(trial = i_trial, n_items = length(wanted_items))
   ls_items <- item_results(wanted_items, collected_items)
