@@ -5,7 +5,7 @@
 \title{THIS IS IMPORTANT - There is an error in the results log where the MissingItemsList and
 Additional ItemsList are flipped. So that is why this is here}
 \usage{
-get_trial_missing_items(obj, i_trial)
+get_trial_missing_items(obj, i_trials)
 }
 \description{
 THIS IS IMPORTANT - There is an error in the results log where the MissingItemsList and

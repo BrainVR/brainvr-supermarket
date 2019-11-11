@@ -4,7 +4,7 @@
 \alias{get_trial_wanted_items}
 \title{Returns list of correct items from a trial}
 \usage{
-get_trial_wanted_items(obj, i_trial)
+get_trial_wanted_items(obj, i_trials)
 }
 \arguments{
 \item{i_trial}{}

@@ -54,6 +54,7 @@ load_supermarket_takslist <- function(filepath, language = "CZ"){
 }
 
 #' HELPERS -------
+#' @noRd
 json_tasklist_to_data_frame <- function(tasklist){
   df <- data.frame(trial = numeric(0), n_items = numeric(0), order = numeric(0), item = character(0))
   for (i in 1:length(tasklist$tasks)) {

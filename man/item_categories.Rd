@@ -19,4 +19,7 @@ item_categories
 This dataframe serves the purpose to convert between language versions
 as well as codument categorization of individual objects
 }
+\details{
+Language options at this point include "CZ" and "EN"
+}
 \keyword{datasets}

@@ -4,10 +4,14 @@
 \alias{load_supermarket_experiments}
 \title{Loads supermarket experiment data from folder}
 \usage{
-load_supermarket_experiments(folder)
+load_supermarket_experiments(folder, language = "CZ")
 }
 \arguments{
 \item{folder}{folder with one or more supermarket experiments}
+
+\item{language}{language of the items in the experiment log.
+Only important if you are not logging item codes
+See language options in [item_categories]. Default is "CZ".}
 }
 \value{
 list with loaded experiments

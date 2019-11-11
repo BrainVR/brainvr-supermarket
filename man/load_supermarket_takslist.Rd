@@ -4,11 +4,14 @@
 \alias{load_supermarket_takslist}
 \title{Loads taskslist form .json file}
 \usage{
-load_supermarket_takslist(filepath)
+load_supermarket_takslist(filepath, language = "CZ")
 }
 \arguments{
 \item{filepath}{path to the .json tasklist file. In newer logging versions, this is already included in the header,
 but in older versions it needs to be loaded separately}
+
+\item{language}{language of the tasklist.  Only important if you are not logging item codes
+See language options in [item_categories]. Default is "CZ".}
 }
 \value{
 data.frame with supermarket task progression

@@ -1,3 +1,4 @@
+#' @noRd
 preprocess_supermarket <- function(obj, language){
   obj$data$position <- add_area_boundaries(obj$data$position, AREA_BOUNDARIES)
   #' NECESSARY TO come before expeirment because of the "has_item_codes" function
@@ -49,6 +50,7 @@ convert_name_to_item_code <- function(items, language){
 
 #' Used on MissingItemsList and AdditionalItemsList to just replace names with proper CODES
 #' takes strings like "potato chips, apple" and returns "ITEM_CHIPS, ITEM_APPLE"
+#' @noRd
 convert_strings_to_item_codes <- function(strings, language){
   res <- sapply(strings, function(x){paste(convert_name_to_item_code(strsplit(x, ",")[[1]], language), collapse=",")})
   return(res)
