@@ -11,7 +11,12 @@ task_performance_trial <- function(obj, i_trial){
   ## DO trial number validations
   exp_data <- obj$data$experiment_log$data
   wanted_items <- get_trial_wanted_items(obj, i_trial)
-  collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial]
+  collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "pickup"]
+  dropped_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "drop"]
+  # removes dropped items from collected items
+  for(dropped_item in dropped_items){
+    collected_items <- collected_items[-match(dropped_item, collected_items)]
+  }
 
   ls <- list(trial = i_trial, n_items = length(wanted_items))
   ls_items <- item_results(wanted_items, collected_items)
@@ -54,14 +59,14 @@ convert_items_to_categories <- function(items){
 # Calculates item results
 item_results <- function(wanted_items, collected_items){
   ls <- list()
-  ls$correct_items <- base::intersect(wanted_items, collected_items)
-  ls$missing_items <- base::setdiff(wanted_items, collected_items)
-  ls$extra_items <- base::setdiff(collected_items, wanted_items)
+  ## This DOESN'T work if the same object can be picked up multiple times
+  ls$correct_items <- intersect_unique(wanted_items, collected_items)
+  ls$missing_items <- setdiff_unique(wanted_items, collected_items)
+  ls$extra_items <- setdiff_unique(collected_items, wanted_items)
   ls <- add_field_lengths(ls, c("missing_items", "correct_items", "extra_items"))
   ls <- collapse_fields(ls, c("missing_items", "correct_items", "extra_items"))
   return(ls)
 }
-
 # Calculates item results but for category fields
 category_results <- function(wanted_items, collected_items){
   ls <- list()
@@ -95,8 +100,8 @@ results_from_previous <- function(extra_items, i_trial, obj){
     all_previous_wanted_items <- get_trial_wanted_items(obj, 1:i_trial-1)
     last_trial_wanted_items <- get_trial_wanted_items(obj, i_trial - 1)
     ls <- list()
-    ls$last_trial_items <- base::intersect(extra_items, last_trial_wanted_items)
-    ls$all_previous_items <- base::intersect(extra_items, all_previous_wanted_items)
+    ls$last_trial_items <- intersect_unique(extra_items, last_trial_wanted_items)
+    ls$all_previous_items <- intersect_unique(extra_items, all_previous_wanted_items)
   }
   ls <- add_field_lengths(ls, c('last_trial_items', "all_previous_items"))
   ls <- collapse_fields(ls, c('last_trial_items', "all_previous_items"))
