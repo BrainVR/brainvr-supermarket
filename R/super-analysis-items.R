@@ -72,19 +72,21 @@ category_results <- function(wanted_items, collected_items){
   wanted_categories <- convert_items_to_categories(wanted_items)
   collected_categories <- convert_items_to_categories(collected_items)
 
-  wanted_counts <- reshape2::melt(table(wanted_categories)) #potentially strings as factors issue
-  collected_counts <- reshape2::melt(table(collected_categories))
+  wanted_counts <- reshape2::melt(table(wanted_categories), factorsAsStrings = TRUE) #potentially strings as factors issue
+  wanted_counts$wanted_categories <- as.character(wanted_counts$wanted_categories)
+  collected_counts <- reshape2::melt(table(collected_categories), factorsAsStrings = TRUE)
+  collected_counts$collected_categories <- as.character(collected_counts$collected_categories)
 
   df_comparing <- merge(wanted_counts, collected_counts,
                         by.x = "wanted_categories", by.y = "collected_categories")
   colnames(df_comparing) <- c("category", "wanted", "collected")
   df_comparing$difference <- df_comparing$wanted - df_comparing$collected
 
-  missing <- df_comparing$difference < 0
-  extra <- df_comparing$difference > 0
+  missing <- df_comparing$difference > 0
+  extra <- df_comparing$difference < 0
   correct <- df_comparing$difference >= 0
-  ls$missing_categories <- rep(as.character(df_comparing$category[missing]), -df_comparing$difference[missing])
-  ls$extra_categories <- rep(as.character(df_comparing$category[extra]), df_comparing$difference[extra])
+  ls$missing_categories <- rep(as.character(df_comparing$category[missing]), df_comparing$difference[missing])
+  ls$extra_categories <- rep(as.character(df_comparing$category[extra]), -df_comparing$difference[extra])
   ls$correct_categories <-  rep(as.character(df_comparing$category[correct]), df_comparing$collected[correct])
   ls <- add_field_lengths(ls, c("missing_categories", "extra_categories", "correct_categories"))
   ls <- collapse_fields(ls, c("missing_categories", "extra_categories", "correct_categories"))

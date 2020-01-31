@@ -10,4 +10,3 @@ intersect_unique <- function(wanted, received){
   res <- wanted[match( make.unique(as.character(received)), make.unique(as.character(wanted)), nomatch=0)]
   return(res)
 }
-
