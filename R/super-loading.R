@@ -3,7 +3,7 @@
 #' @param folder folder with one or more supermarket experiments
 #' @param language language of the items in the experiment log.
 #' Only important if you are not logging item codes
-#' See language options in [item_categories]. Default is "CZ".
+#' See language options in [item_translations]. Default is "CZ".
 #'
 #' @return list with loaded experiments
 #' @export
@@ -40,7 +40,7 @@ load_supermarket_settings <- function(filepath){
 #' @param filepath path to the .json tasklist file. In newer logging versions, this is already included in the header,
 #' but in older versions it needs to be loaded separately
 #' @param language language of the tasklist.  Only important if you are not logging item codes
-#' See language options in [item_categories]. Default is "CZ".
+#' See language options in [item_translations]. Default is "CZ".
 #'
 #' @return data.frame with supermarket task progression
 #' @export

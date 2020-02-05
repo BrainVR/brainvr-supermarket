@@ -78,8 +78,10 @@ category_results <- function(wanted_items, collected_items){
   collected_counts$collected_categories <- as.character(collected_counts$collected_categories)
 
   df_comparing <- merge(wanted_counts, collected_counts,
-                        by.x = "wanted_categories", by.y = "collected_categories")
+                        by.x = "wanted_categories", by.y = "collected_categories",
+                        all = TRUE)
   colnames(df_comparing) <- c("category", "wanted", "collected")
+  df_comparing[is.na(df_comparing)] <- 0
   df_comparing$difference <- df_comparing$wanted - df_comparing$collected
 
   missing <- df_comparing$difference > 0

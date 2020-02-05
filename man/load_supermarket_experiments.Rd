@@ -11,7 +11,7 @@ load_supermarket_experiments(folder, language = "CZ")
 
 \item{language}{language of the items in the experiment log.
 Only important if you are not logging item codes
-See language options in [item_categories]. Default is "CZ".}
+See language options in [item_translations]. Default is "CZ".}
 }
 \value{
 list with loaded experiments

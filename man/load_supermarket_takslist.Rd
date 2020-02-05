@@ -11,7 +11,7 @@ load_supermarket_takslist(filepath, language = "CZ")
 but in older versions it needs to be loaded separately}
 
 \item{language}{language of the tasklist.  Only important if you are not logging item codes
-See language options in [item_categories]. Default is "CZ".}
+See language options in [item_translations]. Default is "CZ".}
 }
 \value{
 data.frame with supermarket task progression

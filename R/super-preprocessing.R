@@ -43,8 +43,8 @@ has_item_codes <- function(obj){
 }
 
 convert_name_to_item_code <- function(items, language){
-  # The [1] is there because some of the items have two IDs in the item_categories data
-  codes <- sapply(items, function(x){item_categories$ID[item_categories[[language]] == x][1]}, simplify = TRUE)
+  # The [1] is there because some of the items have two IDs in the item_translations data
+  codes <- sapply(items, function(x){item_translations$ID[item_translations[[language]] == x][1]}, simplify = TRUE)
   return(codes)
 }
 
