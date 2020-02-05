@@ -59,8 +59,8 @@ item_results <- function(wanted_items, collected_items){
   ls <- list()
   ## This DOESN'T work if the same object can be picked up multiple times
   ls$correct_items <- intersect_unique(wanted_items, collected_items)
-  ls$missing_items <- setdiff_unique(wanted_items, collected_items)
-  ls$extra_items <- setdiff_unique(collected_items, wanted_items)
+  ls$missing_items <- setdiff_unique(wanted_items, collected_items, nomatch = wanted_items)
+  ls$extra_items <- setdiff_unique(collected_items, wanted_items, nomatch = collected_items)
   ls <- add_field_lengths(ls, c("missing_items", "correct_items", "extra_items"))
   ls <- collapse_fields(ls, c("missing_items", "correct_items", "extra_items"))
   return(ls)
