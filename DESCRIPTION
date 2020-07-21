@@ -17,4 +17,4 @@ Depends:
 RoxygenNote: 6.1.1
 StagedInstall: no
 Suggests: 
-    testthat
+    testthat (>= 2.1.0)

@@ -11,12 +11,10 @@
 #' @examples
 load_supermarket_experiments <- function(folder, language = "CZ"){
   exps <- load_experiments(folder)
-  message("Loaded ", length(exps), " from folder ", folder)
   for(i in 1:length(exps)){
     exp <- preprocess_supermarket(exps[[i]], language)
     exps[[i]] <- exp
   }
-  # Do some preprocessing
   return(exps)
 }
 
