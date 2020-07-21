@@ -11,10 +11,14 @@ supermarket_performance_trial <- function(obj, i_trial){
   ## DO trial number validations
   exp_data <- obj$data$experiment_log$data
   wanted_items <- get_trial_wanted_items(obj, i_trial)
-  collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "pickup"]
-  dropped_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial & exp_data$Action == "drop"]
+  collected_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial &
+                                           exp_data$Action == "pickup"]
+  dropped_items <- exp_data$ObjectName[exp_data$TestCycle == i_trial &
+                                         exp_data$Action == "drop"]
   # removes dropped items from collected items
-  if(length(dropped_items) > 0) collected_items <- setdiff_unique(collected_items, dropped_items)
+  if(length(dropped_items) > 0){
+    collected_items <- setdiff_unique(collected_items, dropped_items)
+  }
 
   ls <- list(trial = i_trial, n_items = length(wanted_items))
   ls_items <- item_results(wanted_items, collected_items)
@@ -32,7 +36,8 @@ supermarket_performance_trial <- function(obj, i_trial){
 
 #' Calculates results for each tríal
 #'
-#' @param obj supermarket experiment loaded with load_supermarket_experiment. Needs to have tasklist attached
+#' @param obj supermarket experiment loaded with load_supermarket_experiment.
+#' Needs to have tasklist attached
 #'
 #' @return
 #' @export

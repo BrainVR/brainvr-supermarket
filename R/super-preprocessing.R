@@ -24,7 +24,9 @@ preprocess_supermarket_experiment <- function(obj, language = "CZ"){
 preprocess_supermarket_results <- function(obj, language){
   res <- get_results_log(obj)
   if(!is.null(res)){
-    if(!("TestCycle" %in% colnames(res)) & nrow(res) > 0) res$TestCycle <- 1:nrow(res)
+    if(!("TestCycle" %in% colnames(res)) & nrow(res) > 0) {
+      res$TestCycle <- 1:nrow(res)
+    }
     res$MissingItemsList <- gsub("[()]","", res$MissingItemsList)
     res$AdditionalItemsList <- gsub("[()]","", res$AdditionalItemsList)
     if(!has_item_codes(obj)){
@@ -43,15 +45,23 @@ has_item_codes <- function(obj){
 }
 
 convert_name_to_item_code <- function(items, language){
-  # The [1] is there because some of the items have two IDs in the item_translations data
-  codes <- sapply(items, function(x){item_translations$ID[item_translations[[language]] == x][1]}, simplify = TRUE)
+  #' The [1] is there because some of the items have two IDs
+  #' in the item_translations data
+  codes <- sapply(items, function(x){
+    item_translations$ID[item_translations[[language]] == x][1]
+    }, simplify = TRUE)
   return(codes)
 }
 
-#' Used on MissingItemsList and AdditionalItemsList to just replace names with proper CODES
-#' takes strings like "potato chips, apple" and returns "ITEM_CHIPS, ITEM_APPLE"
+#' Used on MissingItemsList and AdditionalItemsList to just replace
+#' names with proper CODES takes strings like "potato chips, apple" and
+#' returns "ITEM_CHIPS, ITEM_APPLE"
 #' @noRd
 convert_strings_to_item_codes <- function(strings, language){
-  res <- sapply(strings, function(x){paste(convert_name_to_item_code(strsplit(x, ",")[[1]], language), collapse=",")})
+  res <- sapply(strings,
+                function(x){
+                  paste(convert_name_to_item_code(strsplit(x, ",")[[1]], language),
+                        collapse=",")
+                })
   return(res)
 }
