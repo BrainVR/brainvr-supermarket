@@ -1,0 +1,27 @@
+***SESSION HEADER***
+{
+  "Participant": "1870",
+  "Timestamp": "07-48-01-24-01-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Test_cycle;Task_items;Player_possition;Object_Name;Task_Order;Action;Right_Wrong;Trajectory;
+96.8772;1;2;(-29.5, 0.6, 73.4);ITEM_COFFEE;1;Sebráno;Správně;169.8493;
+124.8463;1;2;(-22.1, 1.8, 96.6);ITEM_KNIFE;2;Sebráno;Správně;93.48827;
+124.9786;1;2;(-22.1, 1.8, 96.7);ITEM_KNIFE;2;Sebráno;Špatně;0;
+128.8303;1;2;(-28.4, 2.1, 96.7);ITEM_KNIFE;2;Odhozeno;Správně;14.24001;
+170.5152;2;3;(-21.4, 1.1, 89.5);ITEM_MICROWAVE;2;Sebráno;Správně;45.0892;
+236.1166;2;3;(-17.1, 1.8, 97.9);ITEM_PERFUME;1;Sebráno;Správně;195.7515;
+290.4098;2;3;(-19.3, 0.7, 97.8);ITEM_TOWEL;3;Sebráno;Správně;167.792;
+345.0870;3;4;(-33.3, 0.8, 81.1);ITEM_PLUM;4;Sebráno;Správně;52.6043;
+379.2644;3;4;(-16.5, 0.7, 97.8);ITEM_SOAP;1;Sebráno;Správně;114.5602;
+526.8765;3;4;(-14.2, 2.8, 74.1);ITEM_SODA;3;Sebráno;Správně;403.1544;
+541.7720;3;4;(-17.2, 2.6, 66.9);ITEM_MACARONI;2;Sebráno;Správně;29.75999;
+612.5481;4;5;(-18.8, 1.8, 96.7);ITEM_COOKINGPOT;2;Sebráno;Správně;39.84784;
+619.3490;4;5;(-21.4, 1.1, 89.5);ITEM_MICROWAVE;0;Sebráno;Špatně;23.12002;
+627.7103;4;5;(-14.3, 0.6, 83.2);ITEM_LIQUER;5;Sebráno;Správně;13.76;
+672.6113;4;5;(-15.3, 1.6, 68.2);ITEM_LUNCHEONMEAT;1;Sebráno;Správně;100.1606;
+761.5805;5;5;(-16.7, 0.8, 54.6);ITEM_EGGS;4;Sebráno;Správně;78.39877;
+809.3159;5;5;(-16.4, 1.8, 67.0);ITEM_NOODLES;5;Sebráno;Správně;117.2956;

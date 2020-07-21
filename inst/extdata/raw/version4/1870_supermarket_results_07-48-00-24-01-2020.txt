@@ -1,0 +1,15 @@
+***SESSION HEADER***
+{
+  "Participant": "1870",
+  "Timestamp": "07-48-01-24-01-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time_finished;Time_started;Task_items;Items_collected;Additional_items;Missing_items;Task_time;Task_trajectory;Additional_items_list;Missing_items_list;
+130.6433;39.11;2;2;0;0;82.81;283.02;;;
+293.7864;149.19;3;3;0;0;135.87;420.36;;;
+553.2320;321.47;4;4;0;0;223.04;642.38;;;
+686.4197;590.76;5;3;1;2;86.94;210.03;(ITEM_BALL,ITEM_MUSLIBAR);(ITEM_MICROWAVE);
+872.0569;728.6;5;2;0;3;134.74;333.7;(ITEM_BROCCOLI,ITEM_PEAR,ITEM_BAGEL);;
