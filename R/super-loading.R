@@ -9,8 +9,10 @@
 #' @export
 #'
 #' @examples
-load_supermarket_experiments <- function(folder, language = "CZ"){
-  exps <- load_experiments(folder)
+load_supermarket_experiments <- function(folder,
+                                         language = "CZ",
+                                         override = FALSE){
+  exps <- load_experiments(folder, override = override)
   for(i in 1:length(exps)){
     exp <- preprocess_supermarket(exps[[i]], language)
     exps[[i]] <- exp
