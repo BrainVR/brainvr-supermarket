@@ -19,27 +19,13 @@ preprocess_supermarket_experiment <- function(obj, language = "CZ"){
   }
   exp <- convert_action(exp)
   exp <- convert_rightwrong(exp)
-  if(grepl("ITEM", exp$ObjectName[1])){
+  if(!(grepl("ITEM", exp$ObjectName[1]))){
     exp$ObjectName <- convert_name_to_item_code(exp$ObjectName, language)
   }
   obj$data$experiment_log$data <- exp
   return(obj)
 }
 
-convert_action <- function(exp){
-  if(any(names(term_translation$Action) %in% exp$Action)){
-    exp$Action <- term_translation$Action[exp$Action]
-  }
-  return(exp)
-}
-
-convert_rightwrong <- function(exp){
-  if(any(names(term_translation$RightWrong) %in% exp$RightWrong)){
-    exp$RightWrong <- term_translation$RightWrong[exp$RightWrong]
-  }
-  exp$RightWrong <- exp$RightWrong == 1
-  return(exp)
-}
 
 preprocess_supermarket_results <- function(obj, language){
   res <- get_results_log(obj)
@@ -77,11 +63,32 @@ has_item_codes <- function(obj){
   return(grepl("ITEM", exp_log$ObjectName[1]))
 }
 
-#' Returns if the Action column has czech terminology
-has_czech_actions <- function(exp){
-  return
+
+#' Converts actions written in Czech to english counterparts
+#'
+#' @param exp experiment_log
+#'
+#' @return modified experiment log
+convert_action <- function(exp){
+  if(any(names(term_translation$Action) %in% exp$Action)){
+    exp$Action <- term_translation$Action[exp$Action]
+  }
+  return(exp)
 }
 
+#' Converts RightWrong written in Czech to english counterparts.
+#' Then it converts the column to logical
+#'
+#' @param exp experiment_log
+#'
+#' @return modified experiment log
+convert_rightwrong <- function(exp){
+  if(any(names(term_translation$RightWrong) %in% exp$RightWrong)){
+    exp$RightWrong <- term_translation$RightWrong[exp$RightWrong]
+  }
+  exp$RightWrong <- exp$RightWrong == 1
+  return(exp)
+}
 #' Converts existing
 #'
 #' @param items
