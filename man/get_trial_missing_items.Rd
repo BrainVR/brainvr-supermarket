@@ -2,12 +2,14 @@
 % Please edit documentation in R/super-getters.R
 \name{get_trial_missing_items}
 \alias{get_trial_missing_items}
-\title{THIS IS IMPORTANT - There is an error in the results log where the MissingItemsList and
-Additional ItemsList are flipped. So that is why this is here}
+\title{THIS IS IMPORTANT - There is an error in the results log where
+the MissingItemsList and Additional ItemsList are mistankingly labeled as
+the other one. So that is why this is here}
 \usage{
 get_trial_missing_items(obj, i_trials)
 }
 \description{
-THIS IS IMPORTANT - There is an error in the results log where the MissingItemsList and
-Additional ItemsList are flipped. So that is why this is here
+THIS IS IMPORTANT - There is an error in the results log where
+the MissingItemsList and Additional ItemsList are mistankingly labeled as
+the other one. So that is why this is here
 }

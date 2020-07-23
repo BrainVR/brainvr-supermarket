@@ -7,8 +7,9 @@
 load_supermarket_settings(filepath)
 }
 \arguments{
-\item{filepath}{path to the .json settings file. In newer versions, settings is usually already included in the header,
-but in older versions it needs to be loaded sparately.}
+\item{filepath}{path to the .json settings file. In newer versions,
+settings is usually already included in the header, but in older versions
+it needs to be loaded sparately.}
 }
 \value{
 list with loaded settings

@@ -4,7 +4,7 @@
 \alias{load_supermarket_experiments}
 \title{Loads supermarket experiment data from folder}
 \usage{
-load_supermarket_experiments(folder, language = "CZ")
+load_supermarket_experiments(folder, language = "CZ", override = FALSE)
 }
 \arguments{
 \item{folder}{folder with one or more supermarket experiments}

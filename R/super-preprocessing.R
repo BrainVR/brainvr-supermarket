@@ -63,7 +63,6 @@ has_item_codes <- function(obj){
   return(grepl("ITEM", exp_log$ObjectName[1]))
 }
 
-
 #' Converts actions written in Czech to english counterparts
 #'
 #' @param exp experiment_log

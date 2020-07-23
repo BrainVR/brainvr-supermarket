@@ -7,7 +7,8 @@
 supermarket_performance_all(obj)
 }
 \arguments{
-\item{obj}{supermarket experiment loaded with load_supermarket_experiment. Needs to have tasklist attached}
+\item{obj}{supermarket experiment loaded with load_supermarket_experiment.
+Needs to have tasklist attached}
 }
 \description{
 Calculates results for each tríal

@@ -10,11 +10,18 @@ get_trial_wanted_items(obj, i_trials)
 \item{i_trial}{}
 }
 \description{
-this function became necessary when the entire structure of the task changed and
-suddenly the list of items is no longer serialised and is generated but never noted what those
-items are.
+this function became necessary when the entire structure
+of the task changed and suddenly the list of items is no longer serialised
+and is generated but never noted what those items are.
 
-This function requires both actions and results log to be present because it needs both to
-"deduce" which items were supposed to be collected. In case the tasklist is present, the items
-are collected from the tasklist instead
+This function requires both actions and results log to be present because it
+needs both to "deduce" which items were supposed to be collected.
+In case the tasklist is present, the items are collected from the
+tasklist instead
+}
+\examples{
+because if the item is dropped and then picked up again,
+it is considered "Right" again we need to remove wrongly dropped
+This is here because the setdiff unique breaks in case
+one of the vectors is length 0
 }

@@ -7,7 +7,8 @@
 supermarket_performance_trial(obj, i_trial)
 }
 \arguments{
-\item{obj}{supermarket experiment loaded with load_supermarket_experiment. Needs to have tasklist attached}
+\item{obj}{supermarket experiment loaded with load_supermarket_experiment.
+Needs to have tasklist attached}
 
 \item{i_trial}{which trial number as it stands in the tasklist and "TestCycle"}
 }

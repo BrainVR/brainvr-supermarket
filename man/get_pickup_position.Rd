@@ -11,10 +11,12 @@ get_pickup_position(obj, object_name = NULL, i_cycle = NULL)
 
 \item{object_name}{object name as it appears in the experiment log}
 
-\item{i_task}{if there are more objects of the same name picked up, this defines which cycle you are interested in}
+\item{i_task}{if there are more objects of the same name picked up,
+this defines which cycle you are interested in}
 }
 \value{
-navr object with the object path (from previous item to the current item)
+navr object with the object path (from previous item to the
+current item)
 }
 \description{
 Returns position data for picking up a specific object in given trial
