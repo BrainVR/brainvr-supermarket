@@ -1,6 +1,7 @@
 ##' Calculates results for each tríal
 #'
-#' @param obj supermarket experiment loaded with load_supermarket_experiment. Needs to have tasklist attached
+#' @param obj supermarket experiment loaded with load_supermarket_experiment.
+#' Needs to have tasklist attached
 #' @param i_trial which trial number as it stands in the tasklist and "TestCycle"
 #'
 #' @return
@@ -48,7 +49,7 @@ supermarket_performance_all <- function(obj){
   exp_data <- obj$data$experiment_log$data
   for(i_trial in unique(exp_data$TestCycle)){
     results <- supermarket_performance_trial(obj, i_trial)
-    df_results <- rbind(df_results, results, stringsAsFactors = F)
+    df_results <- rbind(df_results, results, stringsAsFactors = FALSE)
   }
   return(df_results)
 }
@@ -64,8 +65,10 @@ item_results <- function(wanted_items, collected_items){
   ls <- list()
   ## This DOESN'T work if the same object can be picked up multiple times
   ls$correct_items <- intersect_unique(wanted_items, collected_items)
-  ls$missing_items <- setdiff_unique(wanted_items, collected_items, nomatch = wanted_items)
-  ls$extra_items <- setdiff_unique(collected_items, wanted_items, nomatch = collected_items)
+  ls$missing_items <- setdiff_unique(wanted_items, collected_items,
+                                     nomatch = wanted_items)
+  ls$extra_items <- setdiff_unique(collected_items, wanted_items,
+                                   nomatch = collected_items)
   ls <- add_field_lengths(ls, c("missing_items", "correct_items", "extra_items"))
   ls <- collapse_fields(ls, c("missing_items", "correct_items", "extra_items"))
   return(ls)
@@ -77,9 +80,11 @@ category_results <- function(wanted_items, collected_items){
   wanted_categories <- convert_items_to_categories(wanted_items)
   collected_categories <- convert_items_to_categories(collected_items)
 
-  wanted_counts <- reshape2::melt(table(wanted_categories), factorsAsStrings = TRUE) #potentially strings as factors issue
+  wanted_counts <- reshape2::melt(table(wanted_categories),
+                                  factorsAsStrings = TRUE) #potentially strings as factors issue
   wanted_counts$wanted_categories <- as.character(wanted_counts$wanted_categories)
-  collected_counts <- reshape2::melt(table(collected_categories), factorsAsStrings = TRUE)
+  collected_counts <- reshape2::melt(table(collected_categories),
+                                     factorsAsStrings = TRUE)
   collected_counts$collected_categories <- as.character(collected_counts$collected_categories)
 
   df_comparing <- merge(wanted_counts, collected_counts,
@@ -92,17 +97,25 @@ category_results <- function(wanted_items, collected_items){
   missing <- df_comparing$difference > 0
   extra <- df_comparing$difference < 0
   correct <- df_comparing$difference >= 0
-  ls$missing_categories <- rep(as.character(df_comparing$category[missing]), df_comparing$difference[missing])
-  ls$extra_categories <- rep(as.character(df_comparing$category[extra]), -df_comparing$difference[extra])
-  ls$correct_categories <-  rep(as.character(df_comparing$category[correct]), df_comparing$collected[correct])
-  ls <- add_field_lengths(ls, c("missing_categories", "extra_categories", "correct_categories"))
-  ls <- collapse_fields(ls, c("missing_categories", "extra_categories", "correct_categories"))
+  ls$missing_categories <- rep(as.character(df_comparing$category[missing]),
+                               df_comparing$difference[missing])
+  ls$extra_categories <- rep(as.character(df_comparing$category[extra]),
+                             -df_comparing$difference[extra])
+  ls$correct_categories <- rep(as.character(df_comparing$category[correct]),
+                                df_comparing$collected[correct])
+  ls <- add_field_lengths(ls, c("missing_categories",
+                                "extra_categories",
+                                "correct_categories"))
+  ls <- collapse_fields(ls, c("missing_categories",
+                              "extra_categories",
+                              "correct_categories"))
   return(ls)
 }
 
 results_from_previous <- function(extra_items, i_trial, obj){
   if(i_trial == 1) {
-    ls <- list(last_trial_items = character(0), all_previous_items = character(0))
+    ls <- list(last_trial_items = character(0),
+               all_previous_items = character(0))
   } else {
     all_previous_wanted_items <- get_trial_wanted_items(obj, 1:i_trial-1)
     last_trial_wanted_items <- get_trial_wanted_items(obj, i_trial - 1)
@@ -156,6 +169,6 @@ create_results_table <- function(){
                            last_trial_items = character(0),
                            n_all_previous_items = numeric(0),
                            all_previous_items = character(0),
-                           stringsAsFactors = F)
+                           stringsAsFactors = FALSE)
   return(df_results)
 }
