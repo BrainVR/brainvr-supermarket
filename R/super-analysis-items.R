@@ -151,7 +151,7 @@ item_category <- function(item_code){
 }
 
 create_results_table <- function(){
-  df_results <- data.frame(trial = numeric,
+  df_results <- data.frame(trial = numeric(0),
                            n_items = numeric(0),
                            n_correct_items = numeric(0),
                            n_missing_items = numeric(0),
