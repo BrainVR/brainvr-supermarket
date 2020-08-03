@@ -41,8 +41,8 @@ preprocess_supermarket_results <- function(obj, language){
     if(!("TestCycle" %in% colnames(res)) & nrow(res) > 0) {
       res$TestCycle <- 1:nrow(res)
     }
-    res$MissingItemsList <- gsub("[()]","", res$MissingItemsList)
-    res$AdditionalItemsList <- gsub("[()]","", res$AdditionalItemsList)
+    res$MissingItemsList <- prepare_item_list(res$MissingItemsList)
+    res$AdditionalItemsList <- prepare_item_list(res$AdditionalItemsList)
     if(!has_item_codes(obj)){
       res$MissingItemsList <- convert_strings_to_item_codes(res$MissingItemsList, language)
       res$AdditionalItemsList <- convert_strings_to_item_codes(res$AdditionalItemsList, language)
@@ -50,6 +50,11 @@ preprocess_supermarket_results <- function(obj, language){
     obj$data$results_log$data <- res
   }
   return(obj)
+}
+
+prepare_item_list <- function(item_list){
+  item_list[is.na(item_list)] <- ""
+  item_list <- gsub("[()]","", item_list)
 }
 
 #' Checks if the items in the data are coded with codes or with czech names
