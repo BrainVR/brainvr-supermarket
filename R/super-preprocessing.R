@@ -29,14 +29,10 @@ preprocess_supermarket_experiment <- function(obj, language = "CZ"){
 
 preprocess_supermarket_results <- function(obj, language){
   res <- get_results_log(obj)
-  res[,ncol(res)] <- NULL # last column is empty
+  res[, ncol(res)] <- NULL # last column is empty
   # VERSION 4 has suddenly renamed columns. Need to standardize them
-  if("Time_finished" %in% colnames(res)){
-    colnames(res) <- c("TimeFinished", "TimeStarted", "TaskItems",
-                       "ItemsCollected", "AdditionalItems", "MissingItems",
-                       "TaskTime", "TaskTrajectory", "AdditionalItemsList",
-                       "MissingItemsList")
-  }
+  if(supermarket_version(res) == 4)  res <- preprocess_results_v4(res)
+  if(supermarket_version(res) == 5)  res <- preprocess_results_v5(res)
   if(!is.null(res)){
     if(!("TestCycle" %in% colnames(res)) & nrow(res) > 0) {
       res$TestCycle <- 1:nrow(res)
@@ -50,6 +46,34 @@ preprocess_supermarket_results <- function(obj, language){
     obj$data$results_log$data <- res
   }
   return(obj)
+}
+
+supermarket_version <- function(res){
+  if("Duplicated_items" %in% colnames(res)){
+    return(5)
+  }
+  if("Time_finished" %in% colnames(res)){
+    return(4)
+  }
+  return(1)
+}
+
+preprocess_results_v4 <- function(res){
+  colnames(res) <- c("TimeFinished", "TimeStarted", "TaskItems",
+                     "ItemsCollected", "AdditionalItems", "MissingItems",
+                     "TaskTime", "TaskTrajectory", "AdditionalItemsList",
+                     "MissingItemsList")
+  return(res)
+}
+
+preprocess_results_v5 <- function(res){
+  # BEWARE - the order of additionalitemslist and missingitemslist is switched because
+  # the old logs had it switched - so the columns actually point to wrong data
+  colnames(res) <- c("TimeFinished", "TimeStarted", "TestCycle", "TaskItemsList", "TaskItems",
+                     "ItemsCollected", "TaskItemsCollected", "AdditionalItems", "MissingItems",
+                     "DuplicatedItems", "TaskTime", "TaskTrajectory", "AdditionalItemsList",
+                     "MissingItemsList", "DuplicatedItemsList")
+  return(res)
 }
 
 prepare_item_list <- function(item_list){
