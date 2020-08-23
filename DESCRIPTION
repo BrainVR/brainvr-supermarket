@@ -1,7 +1,7 @@
 Package: brainvr.supermarket
 Type: Package
 Title: Analysis of supermarket data
-Version: 0.1.1
+Version: 0.1.2
 Author: Lukáš 'hejtmy' Hejtmánek
 Maintainer: Lukáš 'hejtmy' Hejtmánek <hejtmy@gmail.com>
 Description: Package to analyze data from a neurorehabilitation task used at 
