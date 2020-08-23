@@ -4,6 +4,8 @@
 #' @param language language of the items in the experiment log.
 #' Only important if you are not logging item codes
 #' See language options in [item_translations]. Default is "CZ".
+#' @param ... other parameters being set to brainvr.reader::load_experiments.
+#' typically this is `override`, and `save`
 #'
 #' @return list with loaded experiments
 #' @export
@@ -11,9 +13,9 @@
 #' @examples
 load_supermarket_experiments <- function(folder,
                                          language = "CZ",
-                                         override = FALSE){
-  exps <- load_experiments(folder, override = override)
-  for(i in 1:length(exps)){
+                                         ...) {
+  exps <- load_experiments(folder, ...)
+  for (i in seq_len(length(exps))) {
     exp <- preprocess_supermarket(exps[[i]], language)
     exps[[i]] <- exp
   }
@@ -31,7 +33,7 @@ load_supermarket_experiments <- function(folder,
 #' @export
 #'
 #' @examples
-load_supermarket_settings <- function(filepath){
+load_supermarket_settings <- function(filepath) {
   settings <- jsonlite::read_json(filepath)
   return(settings)
 }
@@ -49,7 +51,7 @@ load_supermarket_settings <- function(filepath){
 #' @export
 #'
 #' @examples
-load_supermarket_takslist <- function(filepath, language = "CZ"){
+load_supermarket_takslist <- function(filepath, language = "CZ") {
   settings <- jsonlite::read_json(filepath)
   df <- json_tasklist_to_data_frame(settings)
   df$item <- convert_name_to_item_code(df$item, language)
@@ -58,19 +60,23 @@ load_supermarket_takslist <- function(filepath, language = "CZ"){
 
 #' HELPERS -------
 #' @noRd
-json_tasklist_to_data_frame <- function(tasklist){
-  df <- data.frame(trial = numeric(0),
-                   n_items = numeric(0),
-                   order = numeric(0),
-                   item = character(0))
-  for (i in 1:length(tasklist$tasks)) {
+json_tasklist_to_data_frame <- function(tasklist) {
+  df <- data.frame(
+    trial = numeric(0),
+    n_items = numeric(0),
+    order = numeric(0),
+    item = character(0)
+  )
+  for (i in seq_len(length(tasklist$tasks))) {
     task <- tasklist$tasks[[i]]$task
     n <- length(task)
-    df_small <- data.frame(trial = rep(i, n),
-                           n_items = rep(n, n),
-                           order = 1:n,
-                           item = unlist(task),
-                           stringsAsFactors = FALSE)
+    df_small <- data.frame(
+      trial = rep(i, n),
+      n_items = rep(n, n),
+      order = 1:n,
+      item = unlist(task),
+      stringsAsFactors = FALSE
+    )
     df <- rbind(df, df_small)
   }
   return(df)

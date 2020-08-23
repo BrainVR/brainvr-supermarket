@@ -10,30 +10,38 @@
 #' @export
 #'
 #' @examples
-get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL){
+get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL) {
   exp_log <- get_experiment_log(obj)
-  exp_log$pickup_order <- 1:nrow(exp_log) #for time getting
-  exp_log$trial_pickup_order <- unlist(sapply(rle(exp_log$TestCycle)$lengths,
-                                              function(x){1:x}))
+  exp_log$pickup_order <- seq_len(nrow(exp_log))
+  exp_log$trial_pickup_order <- unlist(sapply(
+    rle(exp_log$TestCycle)$lengths,
+    function(x) {
+      1:x
+    }
+  ))
   obj_log <- exp_log[exp_log$ObjectName == object_name, ]
-  if(nrow(obj_log) > 1){
-    if(is.null(i_cycle)){
-      warning("There were ", nrow(obj_log), "items ", object_name,
-              " picked up. Specify i_cycle to select one")
+  if (nrow(obj_log) > 1) {
+    if (is.null(i_cycle)) {
+      warning(
+        "There were ", nrow(obj_log), "items ", object_name,
+        " picked up. Specify i_cycle to select one"
+      )
       return(NULL)
     }
     obj_log <- obj_log[obj_log$TestCycle == i_cycle, ]
-    if(nrow(obj_log) != 1){
-      warning("There were ", nrow(obj_log), "items ", object_name,
-              " picked up in the cycle. Cannot returns a single one.")
+    if (nrow(obj_log) != 1) {
+      warning(
+        "There were ", nrow(obj_log), "items ", object_name,
+        " picked up in the cycle. Cannot returns a single one."
+      )
       return(NULL)
     }
   }
-  if(obj_log$trial_pickup_order == 1){
+  if (obj_log$trial_pickup_order == 1) {
     # if it is the first item, it considers start the TimeStarted column from results log
     start_time <- obj$data$results_log$data$TimeStarted[obj_log$TestCycle]
   } else {
-    start_time <- exp_log$Time[obj_log$pickup_order-1] #previous item pickup time
+    start_time <- exp_log$Time[obj_log$pickup_order - 1] # previous item pickup time
   }
   end_time <- obj_log$Time
   pos <- get_position_timewindow(obj, start_time, end_time)
@@ -50,7 +58,7 @@ get_pickup_position <- function(obj, object_name = NULL, i_cycle = NULL){
 #' @export
 #'
 #' @examples
-get_trial_position.supermarket <- function(obj, i_trial){
+get_trial_position.supermarket <- function(obj, i_trial) {
   timewindow <- get_trial_times.supermarket(obj, i_trial)
   pos <- get_position_timewindow(obj, timewindow$start, timewindow$end)
   return(pos)
@@ -67,11 +75,13 @@ get_trial_position.supermarket <- function(obj, i_trial){
 #' @export
 #'
 #' @examples
-get_trial_times.supermarket <- function(obj, i_trial){
+get_trial_times.supermarket <- function(obj, i_trial) {
   results_trial <- obj$data$results_log$data[i_trial, ]
-  return(list(waitingToStart = results_trial$TimeStarted,
-              start = results_trial$TimeStarted,
-              end = results_trial$TimeFinished))
+  return(list(
+    waitingToStart = results_trial$TimeStarted,
+    start = results_trial$TimeStarted,
+    end = results_trial$TimeFinished
+  ))
 }
 
 #' Returns list of correct items from a trial
@@ -92,37 +102,39 @@ get_trial_times.supermarket <- function(obj, i_trial){
 #' @export
 #'
 #' @examples
-get_trial_wanted_items <- function(obj, i_trials){
-  if(!is.null(obj$tasklist)) {
+get_trial_wanted_items <- function(obj, i_trials) {
+  if (!is.null(obj$tasklist)) {
     return(obj$tasklist$item[obj$tasklist$trial %in% i_trials])
   }
   ## needs both experiment_log and results log
   exp_log <- get_experiment_log(obj)
   res_log <- get_results_log(obj)
-  if(any(is.null(exp_log), is.null(res_log))){
+  if (any(is.null(exp_log), is.null(res_log))) {
     warning("cannot return wanted items without both experiment and results logs")
     return(NULL)
   }
   collected_correct_items <- exp_log[exp_log$TestCycle %in% i_trials &
-                                       exp_log$Action == "pickup" &
-                                       exp_log$RightWrong, "ObjectName"]
+    exp_log$Action == "pickup" &
+    exp_log$RightWrong, "ObjectName"]
   #' because if the item is dropped and then picked up again,
   #' it is considered "Right" again we need to remove wrongly dropped
   wrongly_dropped_items <- exp_log[exp_log$TestCycle %in% i_trials &
-                                       exp_log$Action == "drop" &
-                                       !exp_log$RightWrong, "ObjectName"]
+    exp_log$Action == "drop" &
+    !exp_log$RightWrong, "ObjectName"]
   #' This is here because the setdiff unique breaks in case
   #' one of the vectors is length 0
-  if(length(wrongly_dropped_items) > 0){
-    collected_correct_items <- setdiff_unique(collected_correct_items,
-                                              wrongly_dropped_items)
+  if (length(wrongly_dropped_items) > 0) {
+    collected_correct_items <- setdiff_unique(
+      collected_correct_items,
+      wrongly_dropped_items
+    )
   }
   non_collected_items <- get_trial_missing_items(obj, i_trials)
   wanted_items <- c(collected_correct_items, non_collected_items)
   return(wanted_items)
 }
 
-get_trial_missing_items <- function(obj, i_trials){
+get_trial_missing_items <- function(obj, i_trials) {
   res_log <- get_results_log(obj)
   #' THIS IS IMPORTANT - There is an error in the results log where
   #' the MissingItemsList and Additional ItemsList are mistankingly labeled as

@@ -1,6 +1,6 @@
 context("Loading")
 
-BASE_PATH <- system.file("extdata", "raw", package="brainvr.supermarket")
+BASE_PATH <- system.file("extdata", "raw", package = "brainvr.supermarket")
 
 test_that("Loading version 1 works", {
   pth <- file.path(BASE_PATH, "version1")
@@ -24,7 +24,7 @@ test_that("Loading version 4 works", {
 
 test_that("Loading with override works", {
   pth <- file.path(BASE_PATH, "version1")
-  expect_error(exps <- load_supermarket_experiments(pth, override=TRUE), NA)
+  expect_error(exps <- load_supermarket_experiments(pth, override = TRUE), NA)
   expect_length(exps, 1)
   expect_s3_class(exps[[1]], "supermarket")
 })
