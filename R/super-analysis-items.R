@@ -47,7 +47,8 @@ supermarket_performance_trial <- function(obj, i_trial) {
 supermarket_performance_all <- function(obj) {
   df_results <- create_results_table()
   exp_data <- obj$data$experiment_log$data
-  for (i_trial in unique(exp_data$TestCycle)) {
+  i_finished <- get_finished_trials_indices.supermarket(obj)
+  for (i_trial in i_finished) {
     results <- supermarket_performance_trial(obj, i_trial)
     df_results <- rbind(df_results, results, stringsAsFactors = FALSE)
   }

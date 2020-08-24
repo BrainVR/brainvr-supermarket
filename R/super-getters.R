@@ -64,6 +64,23 @@ get_trial_position.supermarket <- function(obj, i_trial) {
   return(pos)
 }
 
+#' Returns indices
+#'
+#' @param obj supermarket object
+#'
+#' @return indices e.g. TestCycles of trials which were finished
+#' @export
+#'
+#' @examples
+get_finished_trials_indices.supermarket <- function(obj){
+  res <- get_results_log(obj)
+  i_finished <- res$TestCycle
+  if(any(duplicated(i_finished))) {
+    warning("Some test cycles seem to be duplicated. Check the log consistency.")
+  }
+  return(i_finished)
+}
+
 #' Returns trial times
 #'
 #' @param obj
