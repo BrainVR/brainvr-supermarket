@@ -11,14 +11,10 @@
 #' @export
 #'
 #' @examples
-load_supermarket_experiments <- function(folder,
-                                         language = "CZ",
-                                         ...) {
+load_supermarket_experiments <- function(folder, language = "CZ", ...) {
   exps <- load_experiments(folder, ...)
-  for (i in seq_len(length(exps))) {
-    exp <- preprocess_supermarket(exps[[i]], language)
-    exps[[i]] <- exp
-  }
+  exps <- sapply(exps, preprocess_supermarket, language, simplify = FALSE)
+  exps <- exps[!sapply(exps, is.null)]
   return(exps)
 }
 

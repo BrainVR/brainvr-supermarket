@@ -6,6 +6,7 @@ preprocess_supermarket <- function(obj, language) {
   #' and thus adds them - results then thinks that codes are present and wouldn't process
   #' properly
   obj <- preprocess_supermarket_experiment(obj, language)
+  if (is.null(obj)) return(NULL)
   obj <- preprocess_supermarket_results(obj, language)
   class(obj) <- append("supermarket", class(obj))
   return(obj)
@@ -13,6 +14,10 @@ preprocess_supermarket <- function(obj, language) {
 
 preprocess_supermarket_experiment <- function(obj, language = "CZ") {
   exp <- get_experiment_log(obj)
+  if (nrow(exp) == 0) {
+    warning("The test log is empty. Deleting the session")
+    return(NULL)
+  }
   if ("Test_cycle" %in% colnames(exp)) {
     colnames(exp) <- c(
       "Time", "TestCycle", "TaskItems", "PlayerPosition",
