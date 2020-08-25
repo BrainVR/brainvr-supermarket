@@ -1,0 +1,55 @@
+***SESSION HEADER***
+{
+  "Participant": "testdkdesktop",
+  "Timestamp": "12-34-34-25-08-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Test_cycle;Task_items;Player_position;Object_Name;Task_Order;Action;Right_Wrong;Trajectory;
+45276.3269;1;3;(0.0, 0.0, 0.0);ITEM_BEET;1;Listed;-;0;
+45276.3269;1;3;(0.0, 0.0, 0.0);ITEM_MONKEY;2;Listed;-;0;
+45276.3269;1;3;(0.0, 0.0, 0.0);ITEM_BUTTER;3;Listed;-;0;
+45310.7684;1;3;(-25.3, 0.8, 81.2);ITEM_BEET;1;pickup;right;23.1435;
+45321.2804;1;3;(-26.0, 0.7, 54.7);ITEM_BUTTER;3;pickup;right;23.89458;
+45325.6883;2;5;(0.0, 0.0, 0.0);ITEM_SLICEDTOMATOES;1;Listed;-;0;
+45325.6883;2;5;(0.0, 0.0, 0.0);ITEM_SHAMPOO;2;Listed;-;0;
+45325.6893;2;5;(0.0, 0.0, 0.0);ITEM_MAYONNAISE;3;Listed;-;0;
+45325.6893;2;5;(0.0, 0.0, 0.0);ITEM_PAINTINGS;4;Listed;-;0;
+45325.6893;2;5;(0.0, 0.0, 0.0);ITEM_PEAR;5;Listed;-;0;
+45343.4418;2;5;(-19.4, 2.6, 67.9);ITEM_SLICEDTOMATOES;1;pickup;right;29.81758;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_CHOCOLATE;1;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_TOYBEAR;2;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_MACARONI;3;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_COOKINGPOT;4;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_CUCUMBER;5;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_PILLOW;6;Listed;-;0;
+46144.4116;3;7;(0.0, 0.0, 0.0);ITEM_BRUSHES;7;Listed;-;0;
+46166.9292;3;7;(-29.1, 1.4, 82.3);ITEM_CUCUMBER;5;pickup;right;16.58606;
+46170.4441;3;7;(-28.3, 0.8, 71.7);ITEM_CHOCOLATE;1;pickup;right;9.688464;
+46189.9227;3;7;(-26.4, 3.0, 104.5);ITEM_BRUSHES;7;pickup;right;40.40006;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_PLUM;1;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_BALL;2;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_SALMON;3;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_TOWEL;4;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_FLOUR;5;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_BOWL;6;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_PANTS;7;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_CORN;8;Listed;-;0;
+46198.0469;4;9;(0.0, 0.0, 0.0);ITEM_CANDLE;9;Listed;-;0;
+46220.1335;4;9;(-33.4, 0.8, 81.2);ITEM_PLUM;1;pickup;right;12.03463;
+46231.3449;4;9;(-19.7, 0.6, 54.7);ITEM_SALMON;3;pickup;right;30.31235;
+46265.5765;4;9;(-21.1, 1.9, 97.8);ITEM_BOWL;6;pickup;right;83.84716;
+46268.8724;4;9;(-20.5, 1.9, 96.5);ITEM_PAN;-1;pickup;wrong;6.752414;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_MELON;1;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_SOAP;2;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_TOYTRUCK;3;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_BEER;4;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_TABLET;5;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_RICE;6;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_BOOK;7;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_BANANA;8;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_GLASS;9;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_PASHTET;10;Listed;-;0;
+46276.2935;5;11;(0.0, 0.0, 0.0);ITEM_PIG;11;Listed;-;0;

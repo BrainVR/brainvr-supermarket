@@ -1,14 +1,14 @@
 ***SESSION HEADER***
 {
-  "Participant": "23",
-  "Timestamp": "20-11-51-24-08-2020"
+  "Participant": "testdkdesktop",
+  "Timestamp": "12-34-34-25-08-2020"
 }
 ---SESSION HEADER---
 ***EXPERIMENT INFO***
 {
   "Participant": {
-    "Id": "23",
-    "Age": 23,
+    "Id": "testdkdesktop",
+    "Age": 11,
     "Sex": 0,
     "Platform": 1,
     "Group": 0
@@ -18,20 +18,20 @@
       "name: Default setting",
       "tour: True",
       "tourTime: 240",
-      "showListTime: 10",
+      "showListTime: 5",
       "showListIncrement: 10",
       "delay: True",
-      "delayTime: 5",
+      "delayTime: 180",
       "taskTimeLimit: 1800",
       "keySubmit: True",
       "generateLogs: True",
       "restartPlayer: True",
       "randomUnique: True",
-      "randomList: True",
-      "randomListItems: 2",
-      "randomListIncrement: 1",
+      "randomList: False",
+      "randomListItems: 0",
+      "randomListIncrement: 0",
       "lang: DK",
-      "tasks: F:/Projects/Unity/Builds/supermarket/supermarket_Data/../ExperimentTasks/adel-task-pickup-A-novy.json",
+      "tasks: D:/nudz/buildy/nové buildy supermarket house a supermarket/supermarket/supermarket_Data/../ExperimentTasks/test_B.json",
       "name: Default setting",
       "tour: true",
       "tourTime: 240.0",
@@ -51,15 +51,21 @@
     ]
   },
   "Task": {
-    "tasks": []
+    "tasks": [
+      "ITEM_BEET; ITEM_MONKEY; ITEM_BUTTER",
+      "ITEM_SLICEDTOMATOES; ITEM_SHAMPOO; ITEM_MAYONNAISE; ITEM_PAINTINGS; ITEM_PEAR",
+      "ITEM_CHOCOLATE; ITEM_TOYBEAR; ITEM_MACARONI; ITEM_COOKINGPOT; ITEM_CUCUMBER; ITEM_PILLOW; ITEM_BRUSHES",
+      "ITEM_PLUM; ITEM_BALL; ITEM_SALMON; ITEM_TOWEL; ITEM_FLOUR; ITEM_BOWL; ITEM_PANTS; ITEM_CORN; ITEM_CANDLE",
+      "ITEM_MELON; ITEM_SOAP; ITEM_TOYTRUCK; ITEM_BEER; ITEM_TABLET; ITEM_RICE; ITEM_BOOK; ITEM_BANANA; ITEM_GLASS; ITEM_PASHTET; ITEM_PIG"
+    ]
   },
   "CameraInfo": {
     "FieldOfView": 60.0,
     "FacClipPlane": 1000.0
   },
   "ScreenInfo": {
-    "Height": 1417.0,
-    "Width": 2560.0
+    "Height": 1080.0,
+    "Width": 1920.0
   },
   "BuildInfo": {
     "version": "1.0",

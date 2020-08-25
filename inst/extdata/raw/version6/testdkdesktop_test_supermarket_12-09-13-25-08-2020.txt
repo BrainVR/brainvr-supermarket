@@ -1,0 +1,10 @@
+***SESSION HEADER***
+{
+  "Participant": "testdkdesktop",
+  "Timestamp": "12-09-13-25-08-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Test_cycle;Task_items;Player_position;Object_Name;Task_Order;Action;Right_Wrong;Trajectory;
