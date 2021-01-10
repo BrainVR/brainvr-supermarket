@@ -21,18 +21,25 @@ supermarket_performance_trial <- function(obj, i_trial) {
     collected_items <- setdiff_unique(collected_items, dropped_items)
   }
 
-  ls <- list(trial = i_trial, n_items = length(wanted_items))
+  res <- list(trial = i_trial, n_items = length(wanted_items))
   ls_items <- item_results(wanted_items, collected_items)
-  ls <- c(ls, ls_items)
+  res <- c(res, ls_items)
 
   # Calculates category results
   ls_categories <- category_results(wanted_items, collected_items)
-  ls <- c(ls, ls_categories)
+  res <- c(res, ls_categories)
 
   # calculates how many extra items were requested in previous trials
-  ls_items_previous <- results_from_previous(ls$extra_items, i_trial, obj)
-  ls <- c(ls, ls_items_previous)
-  return(ls)
+  ls_items_previous <- results_from_previous(res$extra_items, i_trial, obj)
+  res <- c(res, ls_items_previous)
+
+  # TODO - This should be calculated from the data, not taken for granted
+  res_log <- get_results_log(obj)
+  res_log <- res_log[i_trial, c("TaskTime", "TaskTrajectory")]
+  colnames(res_log) <- c("results_time", "results_trajectory")
+  res <- c(res, as.list(res_log))
+
+  return(res)
 }
 
 #' Calculates results for each tríal
@@ -45,12 +52,13 @@ supermarket_performance_trial <- function(obj, i_trial) {
 #'
 #' @examples
 supermarket_performance_all <- function(obj) {
-  df_results <- create_results_table()
+  df_results <- data.frame()
   exp_data <- obj$data$experiment_log$data
   i_finished <- get_finished_trials_indices.supermarket(obj)
   for (i_trial in i_finished) {
     results <- supermarket_performance_trial(obj, i_trial)
-    df_results <- rbind(df_results, results, stringsAsFactors = FALSE)
+    df_results <- rbind(df_results, as.data.frame(results),
+                        stringsAsFactors = FALSE)
   }
   return(df_results)
 }
@@ -167,29 +175,4 @@ collapse_fields <- function(ls, fields) {
 # Returns item category from a lookup table
 item_category <- function(item_code) {
   return(item_categories$Category[item_categories$ID == item_code])
-}
-
-create_results_table <- function() {
-  df_results <- data.frame(
-    trial = numeric(0),
-    n_items = numeric(0),
-    n_correct_items = numeric(0),
-    n_missing_items = numeric(0),
-    n_extra_items = numeric(0),
-    correct_items = character(0),
-    missing_items = character(0),
-    extra_items = character(0),
-    correct_categories = character(0),
-    n_correct_categories = numeric(0),
-    extra_categories = character(0),
-    n_extra_categories = numeric(0),
-    missing_categories = character(0),
-    n_missing_categories = numeric(0),
-    n_last_trial_items = numeric(0),
-    last_trial_items = character(0),
-    n_all_previous_items = numeric(0),
-    all_previous_items = character(0),
-    stringsAsFactors = FALSE
-  )
-  return(df_results)
 }
