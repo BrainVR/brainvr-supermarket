@@ -76,6 +76,7 @@ item_results <- function(wanted_items, collected_items) {
   ls <- collapse_fields(ls, c("missing_items", "correct_items", "extra_items"))
   return(ls)
 }
+
 # Calculates item results but for category fields
 category_results <- function(wanted_items, collected_items) {
   ls <- list()

@@ -22,6 +22,16 @@ test_that("Loading version 4 works", {
   test_load_files(pth)
 })
 
+test_that("Loading version 5 works", {
+  pth <- file.path(BASE_PATH, "version5")
+  test_load_files(pth)
+})
+
+test_that("Loading version 6 works", {
+  pth <- file.path(BASE_PATH, "version6")
+  test_load_files(pth)
+})
+
 test_that("Loading with override works", {
   pth <- file.path(BASE_PATH, "version1")
   expect_error(exps <- load_supermarket_experiments(pth, override = TRUE), NA)
