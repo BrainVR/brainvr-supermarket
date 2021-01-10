@@ -1,6 +1,9 @@
 #' Plots position data and adds background
 #'
-#' @param obj navr object filtered from the supermarket data position
+#' @param obj navr object filtered from the supermarket data position.
+#' The navr is taken on purpose instead of supermarket object as it is generally
+#' being returned from get_trial_position data, instead of supermarket object, therefore
+#' this function is actually easier to use in consequent path plotting
 #' @param background do you want to add background to the path
 #' @param background_type if you want installed background (categories, plain)
 #' @param custom_background path to your custom background
