@@ -36,7 +36,6 @@ preprocess_supermarket_experiment <- function(obj, language = "CZ") {
 
 preprocess_supermarket_results <- function(obj, language) {
   res <- get_results_log(obj)
-  res[, ncol(res)] <- NULL # last column is empty
   # VERSION 4 has suddenly renamed columns. Need to standardize them
   if (supermarket_version(res) == 4) res <- preprocess_results_v4(res)
   if (supermarket_version(res) == 5) res <- preprocess_results_v5(res)
@@ -150,7 +149,8 @@ convert_name_to_item_code <- function(items, language) {
 #' @noRd
 convert_strings_to_item_codes <- function(strings, language) {
   convert_string <- function(x) {
-    paste(convert_name_to_item_code(strsplit(x, ",")[[1]], language), collapse = ",")
+    paste(convert_name_to_item_code(strsplit(x, ",")[[1]], language),
+          collapse = ",")
   }
   res <- sapply(strings, convert_string)
   return(res)
