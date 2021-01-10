@@ -1,5 +1,3 @@
-context("Loading")
-
 BASE_PATH <- system.file("extdata", "raw", package = "brainvr.supermarket")
 
 test_that("Loading version 1 works", {
