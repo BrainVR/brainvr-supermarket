@@ -4,11 +4,13 @@
 \name{item_categories}
 \alias{item_categories}
 \title{Item categories encoding table}
-\format{A data.frame with 212 items and 5 variables:
+\format{
+A data.frame with 212 items and 5 variables:
 \describe {
    \item{ID}{ID of the item. In english, but ultimately convertable}
    \item{Category}{name of the category ofg the item in english}
-}}
+}
+}
 \usage{
 item_categories
 }

@@ -9,6 +9,9 @@ get_trial_wanted_items(obj, i_trials)
 \arguments{
 \item{i_trial}{}
 }
+\value{
+
+}
 \description{
 this function became necessary when the entire structure
 of the task changed and suddenly the list of items is no longer serialised

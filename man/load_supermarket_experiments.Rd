@@ -4,7 +4,7 @@
 \alias{load_supermarket_experiments}
 \title{Loads supermarket experiment data from folder}
 \usage{
-load_supermarket_experiments(folder, language = "CZ", override = FALSE)
+load_supermarket_experiments(folder, language = "CZ", ...)
 }
 \arguments{
 \item{folder}{folder with one or more supermarket experiments}
@@ -12,6 +12,9 @@ load_supermarket_experiments(folder, language = "CZ", override = FALSE)
 \item{language}{language of the items in the experiment log.
 Only important if you are not logging item codes
 See language options in [item_translations]. Default is "CZ".}
+
+\item{...}{other parameters being set to brainvr.reader::load_experiments.
+typically this is `override`, and `save`}
 }
 \value{
 list with loaded experiments

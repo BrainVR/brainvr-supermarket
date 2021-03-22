@@ -9,6 +9,9 @@
 \arguments{
 \item{i_trial}{}
 }
+\value{
+
+}
 \description{
 Returns trial times
 }

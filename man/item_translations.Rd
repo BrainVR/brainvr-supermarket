@@ -4,13 +4,15 @@
 \name{item_translations}
 \alias{item_translations}
 \title{Item translation}
-\format{A data.frame with 212 items and 5 variables:
+\format{
+A data.frame with 212 items and 5 variables:
 \describe {
    \item{ID}{ID of the item}
    \item{CZ}{Czech name of the item. UTF-8 encoded}
    \item{EN}{English common name of the item. uTF-8 encoded}
    \item{CZR}{}
-}}
+}
+}
 \usage{
 item_translations
 }

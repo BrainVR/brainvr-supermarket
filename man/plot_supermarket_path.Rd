@@ -4,11 +4,19 @@
 \alias{plot_supermarket_path}
 \title{Plots position data and adds background}
 \usage{
-plot_supermarket_path(obj, background = FALSE,
-  background_type = "categories", custom_background = NULL, ...)
+plot_supermarket_path(
+  obj,
+  background = FALSE,
+  background_type = "categories",
+  custom_background = NULL,
+  ...
+)
 }
 \arguments{
-\item{obj}{navr object filtered from the supermarket data position}
+\item{obj}{navr object filtered from the supermarket data position.
+The navr is taken on purpose instead of supermarket object as it is generally
+being returned from get_trial_position data, instead of supermarket object, therefore
+this function is actually easier to use in consequent path plotting}
 
 \item{background}{do you want to add background to the path}
 

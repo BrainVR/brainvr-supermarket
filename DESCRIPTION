@@ -15,7 +15,7 @@ Remotes:
   github::brainvr/brainvr-reader
 Depends:
   brainvr.reader
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 StagedInstall: no
 Suggests: 
     testthat (>= 2.1.0)
