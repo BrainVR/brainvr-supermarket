@@ -92,14 +92,13 @@ category_results <- function(wanted_items, collected_items) {
   wanted_categories <- convert_items_to_categories(wanted_items)
   collected_categories <- convert_items_to_categories(collected_items)
 
-  wanted_counts <- reshape2::melt(table(wanted_categories),
-    factorsAsStrings = TRUE
-  ) # potentially strings as factors issue
-  wanted_counts$wanted_categories <- as.character(wanted_counts$wanted_categories)
-  collected_counts <- reshape2::melt(table(collected_categories),
-    factorsAsStrings = TRUE
-  )
-  collected_counts$collected_categories <- as.character(collected_counts$collected_categories)
+  wanted_counts <- as.data.frame(table(wanted_categories),
+                                 stringsAsFactors = FALSE)
+  colnames(wanted_counts)[2] <- "value"
+
+  collected_counts <- as.data.frame(table(collected_categories),
+                                    stringsAsFactors = FALSE)
+  colnames(collected_counts)[2] <- "value"
 
   df_comparing <- merge(wanted_counts, collected_counts,
     by.x = "wanted_categories", by.y = "collected_categories",
@@ -174,5 +173,10 @@ collapse_fields <- function(ls, fields) {
 
 # Returns item category from a lookup table
 item_category <- function(item_code) {
-  return(item_categories$Category[item_categories$ID == item_code])
+  category <- item_categories$Category[item_categories$ID == item_code]
+  if(length(category) == 0) return(NA_character_)
+  if(length(category) > 1){
+    stop("The item is present in the category encoding table multiple times.")
+  }
+  return(category)
 }
