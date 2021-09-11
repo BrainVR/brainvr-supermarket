@@ -1,0 +1,40 @@
+reference:
+- title: Loading and preprocessing
+  contents:
+  - '`load_supermarket_experiments`'
+  - '`load_supermarket_settings`'
+  - '`load_supermarket_takslist`'
+  - '`convert_action`'
+  - '`convert_name_to_item_code`'
+  - '`convert_rightwrong`'
+
+- title: Getters
+  contents:
+  - '`get_trial_missing_items`'
+  - '`get_trial_position.supermarket`'
+  - '`get_trial_times.supermarket`'
+  - '`get_trial_wanted_items`'
+  - '`get_pickup_position`'
+  - '`get_finished_trials_indices.supermarket`'
+  - '`has_item_codes`'
+
+- title: Visualisations
+  contents:
+  - '`plot_supermarket_path`'
+
+- title: Analysis
+  contents:
+  - '`supermarket_performance_all`'
+  - '`supermarket_performance_trial`'
+
+- title: File helpers
+  description:
+  contents:
+  - '`clear_test_logs`'
+  - '`rename_action_to_test_logs`'
+
+- title: Data
+  description: Data files used in language conversions
+  contents:
+  - '`item_categories`'
+  - '`item_translations`'
