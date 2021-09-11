@@ -1,0 +1,21 @@
+***SESSION HEADER***
+{
+  "Participant": "10001",
+  "Timestamp": "09-50-08-10-07-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Test_cycle;Task_items;Player_possition;Object_Name;Task_Order;Action;Right_Wrong;Trajectory;
+679.1140;1;3;(-18.7, 1.8, 54.7);ITEM_MILK;3;picked;right;140.2042;
+750.1866;1;3;(-35.7, 0.8, 81.2);ITEM_CHERRIES;2;picked;right;76.10856;
+838.7720;1;3;(-17.1, 1.8, 90.5);ITEM_PIG;1;picked;right;32.51659;
+1159.6370;2;5;(-36.0, 1.6, 82.8);ITEM_APPLE;5;picked;right;11.74401;
+1295.3300;2;5;(-25.2, 1.9, 104.2);ITEM_PENCIL;4;picked;right;78.21757;
+1372.5460;2;5;(-21.1, 0.7, 97.9);ITEM_WASHINGLIQUID;2;picked;right;16.69065;
+1459.8670;2;5;(-17.9, 0.6, 54.8);ITEM_CREAM;3;picked;right;59.48136;
+1801.0550;3;7;(-25.9, 1.9, 104.3);ITEM_ERASER;7;picked;right;54.69065;
+1835.4040;3;7;(-21.9, 1.1, 104.4);ITEM_BOOK;6;picked;right;4.993022;
+1950.6560;3;7;(-29.4, 1.4, 82.1);ITEM_EGGPLANT;5;picked;right;113.9994;
+2035.1260;3;7;(-19.7, 0.7, 96.7);ITEM_AIRPLANE;2;picked;right;52.47592;

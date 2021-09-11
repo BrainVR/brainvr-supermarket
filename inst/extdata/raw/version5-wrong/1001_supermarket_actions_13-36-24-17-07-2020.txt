@@ -1,0 +1,18 @@
+***SESSION HEADER***
+{
+  "Participant": "1001",
+  "Timestamp": "13-36-24-17-07-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Test_cycle;Task_items;Player_possition;Object_Name;Task_Order;Action;Right_Wrong;Trajectory;
+558.4983;1;3;(-19.5, 0.9, 90.5);ITEM_MONKEY;2;picked;right;58.64543;
+609.3038;1;3;(-25.5, 0.7, 54.4);ITEM_BUTTER;3;picked;right;52.15337;
+659.6824;1;3;(-25.3, 0.8, 81.2);ITEM_BEET;1;picked;right;37.75508;
+1093.7720;2;5;(-35.0, 1.6, 82.3);ITEM_PEAR;5;picked;right;148.004;
+1741.3560;3;7;(-26.6, 3.0, 104.5);ITEM_BRUSHES;7;picked;right;34.66531;
+1821.5260;3;7;(-16.0, 0.9, 96.8);ITEM_PILLOW;6;picked;right;30.57637;
+1839.7250;3;7;(-22.2, 2.0, 90.4);ITEM_TOYBEAR;2;picked;right;5.804881;
+1913.8370;3;7;(-28.3, 0.8, 71.1);ITEM_CHOCOLATE;1;picked;right;41.81909;

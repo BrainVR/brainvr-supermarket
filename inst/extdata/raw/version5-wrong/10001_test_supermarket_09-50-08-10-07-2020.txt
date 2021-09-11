@@ -1,0 +1,10 @@
+***SESSION HEADER***
+{
+  "Participant": "10001",
+  "Timestamp": "09-50-08-10-07-2020"
+}
+---SESSION HEADER---
+***TEST HEADER***
+
+---TEST HEADER---
+Time;Sender;Index;Event;
