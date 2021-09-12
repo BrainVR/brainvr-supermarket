@@ -36,3 +36,10 @@ test_that("Loading with override works", {
   expect_length(exps, 1)
   expect_s3_class(exps[[1]], "supermarket")
 })
+
+test_that("loading a single file works",{
+  pth <- file.path(BASE_PATH, "version5")
+  expect_error(exp <- load_supermarket_experiment(pth, "13-29-31-12-06-2020"), NA)
+  expect_error(exp <- load_supermarket_experiment(pth, "13-29-31-12-06-2021"))
+  expect_s3_class(exp, "supermarket")
+})

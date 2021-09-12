@@ -2,9 +2,12 @@
 % Please edit documentation in R/super-loading.R
 \name{load_supermarket_experiments}
 \alias{load_supermarket_experiments}
+\alias{load_supermarket_experiment}
 \title{Loads supermarket experiment data from folder}
 \usage{
 load_supermarket_experiments(folder, language = "CZ", ...)
+
+load_supermarket_experiment(folder, timestamp, language = "CZ", ...)
 }
 \arguments{
 \item{folder}{folder with one or more supermarket experiments}
@@ -14,7 +17,8 @@ Only important if you are not logging item codes
 See language options in [item_translations]. Default is "CZ".}
 
 \item{...}{other parameters being set to brainvr.reader::load_experiments.
-typically this is `override`, and `save`}
+typically this is `override`, and `save`. If `timestamp` is defined, then
+the function `brainvr.reader::load_experiment` is used instead}
 }
 \value{
 list with loaded experiments
@@ -22,3 +26,10 @@ list with loaded experiments
 \description{
 Loads supermarket experiment data from folder
 }
+\section{Functions}{
+\itemize{
+\item \code{load_supermarket_experiment}: Loads a single supermarket experiment
+given the passed timestamp. Throws error when not found. Use only if you know your
+timestamps
+}}
+

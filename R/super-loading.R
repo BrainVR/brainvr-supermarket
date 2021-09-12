@@ -5,7 +5,8 @@
 #' Only important if you are not logging item codes
 #' See language options in [item_translations]. Default is "CZ".
 #' @param ... other parameters being set to brainvr.reader::load_experiments.
-#' typically this is `override`, and `save`
+#' typically this is `override`, and `save`. If `timestamp` is defined, then
+#' the function `brainvr.reader::load_experiment` is used instead
 #'
 #' @return list with loaded experiments
 #' @export
@@ -18,6 +19,16 @@ load_supermarket_experiments <- function(folder, language = "CZ", ...) {
   return(exps)
 }
 
+#' @describeIn load_supermarket_experiments Loads a single supermarket experiment
+#' given the passed timestamp. Throws error when not found. Use only if you know your
+#' timestamps
+#' @export
+load_supermarket_experiment <- function(folder, timestamp, language = "CZ", ...){
+  exp <- load_experiment(folder, exp_timestamp = timestamp, ...)
+  if(is.null(exp)) return(NULL)
+  exp <- preprocess_supermarket(exp, language)
+  return(exp)
+}
 #' Loads .json settings file
 #'
 #' @param filepath path to the .json settings file. In newer versions,
