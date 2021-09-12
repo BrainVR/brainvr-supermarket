@@ -96,9 +96,14 @@ category_results <- function(wanted_items, collected_items) {
                                  stringsAsFactors = FALSE)
   colnames(wanted_counts)[2] <- "value"
 
-  collected_counts <- as.data.frame(table(collected_categories),
-                                    stringsAsFactors = FALSE)
-  colnames(collected_counts)[2] <- "value"
+  if(is.null(collected_categories)){
+    collected_counts <- data.frame(collected_categories = character(),
+                                   value=integer())
+  } else {
+    collected_counts <- as.data.frame(table(collected_categories),
+                                      stringsAsFactors = FALSE)
+    colnames(collected_counts)[2] <- "value"
+  }
 
   df_comparing <- merge(wanted_counts, collected_counts,
     by.x = "wanted_categories", by.y = "collected_categories",
