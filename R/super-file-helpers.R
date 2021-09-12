@@ -10,8 +10,11 @@ clear_test_logs <- function(folder){
   pth_test <- list.files(folder, pattern = "_test_",
              full.names = TRUE)
   # check if empty
+  for(pth in pth_test){
+    log <- load_brainvr_log(pth)
+    if(nrow(log$data) <= 0) unlink(pth)
+  }
   # remove
-  unlink(pth_test)
 }
 
 #' Convets action logs to test logs. The outcome is the version 5
@@ -24,7 +27,6 @@ clear_test_logs <- function(folder){
 #' @examples
 rename_action_to_test_logs <- function(folder){
   # find all actions logs
-
   pth_actions <- list.files(folder, pattern = "_actions_",
              full.names = TRUE)
   if(length(pth_actions) <= 0) return()
