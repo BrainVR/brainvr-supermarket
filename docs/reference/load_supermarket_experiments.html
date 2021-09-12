@@ -112,7 +112,9 @@
     <p>Loads supermarket experiment data from folder</p>
     </div>
 
-    <pre class="usage"><span class='fu'>load_supermarket_experiments</span><span class='op'>(</span><span class='va'>folder</span>, language <span class='op'>=</span> <span class='st'>"CZ"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>load_supermarket_experiments</span><span class='op'>(</span><span class='va'>folder</span>, language <span class='op'>=</span> <span class='st'>"CZ"</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>load_supermarket_experiment</span><span class='op'>(</span><span class='va'>folder</span>, <span class='va'>timestamp</span>, language <span class='op'>=</span> <span class='st'>"CZ"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,13 +132,22 @@ See language options in [item_translations]. Default is "CZ".</p></td>
     <tr>
       <th>...</th>
       <td><p>other parameters being set to brainvr.reader::load_experiments.
-typically this is `override`, and `save`</p></td>
+typically this is `override`, and `save`. If `timestamp` is defined, then
+the function `brainvr.reader::load_experiment` is used instead</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>list with loaded experiments</p>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
+
+    
+<ul>
+<li><p><code>load_supermarket_experiment</code>: Loads a single supermarket experiment
+given the passed timestamp. Throws error when not found. Use only if you know your
+timestamps</p></li>
+</ul>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
